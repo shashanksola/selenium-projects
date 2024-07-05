@@ -7,7 +7,7 @@ import time
 
 driver = webdriver.Chrome()
 
-driver.get("https://ngl.link/shaik.abraz.7")
+driver.get("https://ngl.link/YOUR_USERNAME")
 
 question = driver.find_element(By.ID, "question")
 
