@@ -1,0 +1,138 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+import time
+
+driver = webdriver.Chrome()
+
+driver.get("https://ngl.link/shaik.abraz.7")
+
+question = driver.find_element(By.ID, "question")
+
+data = [
+    "What is your favorite sleeping position of all time?",
+    "What is the dumbest way you've been hurt?",
+    "What are the three scents you like?",
+    "What sport will be invented next?",
+    "What’s your favorite board game?",
+    "Which word would you use if you could only use one for the rest of your life?",
+    "Would you rather have intelligence over looks?",
+    "What was your most embarrassing moment in grade school?",
+    "Would you rather stay in or go out on a Friday night?",
+    "Have you ever thrown someone an extravagant party?",
+    "Fun question to ask people: 'What is the weirdest thing you have ever eaten?' Canva/Parade",
+    "What is the weirdest thing you have ever eaten?",
+    "Out of the four seasons, what’s your favorite one?",
+    "What is the most absurd thing you've been tricked into doing or believing?",
+    "What is something true that nobody agrees with you on?",
+    "Which instrument has the funniest sound?",
+    "Where would you relocate if you were forced to leave the country?",
+    "Do you care about what other people tell you?",
+    "If you could meet anyone in this world today, who would you meet?",
+    "What’s the best type of cheese for you?",
+    "What is the greatest risk you have ever taken?",
+    "Have you ever thought of what your future baby will be named?",
+    "What are those things you're too old to do but you still enjoy?",
+    "What are your pet peeves?",
+    "Who’s the messiest person you’ve ever known?",
+    "Which of the two smells better, fresh-cut grass or bread baking in the oven?",
+    "Who is your all-time favorite Disney character?",
+    "Fun question to ask about being afraid of ghosts Canva/Parade",
+    "Are you afraid of ghosts?",
+    "Can you carry an elephant?",
+    "What’s the worst color that was ever invented?",
+    "What is the weirdest text you have ever received recently?",
+    "What would you be if you had to wear one Halloween costume every day for the rest of your life?",
+    "What is one ability that you believe everybody should possess?",
+    "How many times has your heart been broken?",
+    "What is the first thing you do after getting home from a trip?",
+    "What are the things you’d spend with a billion dollars?",
+    "What are the songs that make you sing along whenever you hear them?",
+    "How did your parents meet?",
+    "What has been your greatest kitchen mistake?",
+    "What's the craziest bet you have ever made?",
+    "Do you believe that love is blind?",
+    "Who would you want to trade lives with?",
+    "If you were given the chance to steal something, what would it be?",
+    "What type of cuisine would you serve your customers if you own a five-star restaurant?",
+    "What's the fanciest event you've ever attended?",
+    "Who is your greatest enemy?",
+    "What food should taste better than its appearance?",
+    "What’s the first thing you pack for an out-of-the-country flight?",
+    "Do you actively post on social media?",
+    "If you could only teach three things to your future child, what would they be?",
+    "What is the worst TV advertisement you’ve seen recently?",
+    "What’s the most addictive game for you?",
+    "What do you usually do during weekends?",
+    "If you were given the chance to make your one wish come true, what would it be?",
+    "What period would you travel to if you were given a time machine?",
+    "What’s the food you usually refuse to share?",
+    "What are the hobbies you want to develop?",
+    "Fun questions to ask people about horoscopes Canva/Parade",
+    "Do you believe in horoscopes?",
+    "What was your favorite childhood book?",
+    "Would you take it if you had the opportunity to be immortal?",
+    "What is something your brain wants to convince you to do but you have to fight it?",
+    "Which would be the smartest animal if they could all talk?",
+    "What movie makes you laugh even after watching it several times?",
+    "What was your favorite toy when you were a child?",
+    "What is the best name you could think of for a cat?",
+    "Have you ever counted your steps while walking?",
+    "Do you believe in heaven?",
+    "If you have a million, what are the things you wouldn’t spend?",
+    "If you could have lunch with one person from history, who would it be?",
+    "What’s the certain product you couldn’t live without?",
+    "Fun question to ask people about a yacht name Canva/Parade",
+    "What would you name your yacht if you had one?",
+    "Where is your all-time dream vacation?",
+    "How do you want to die?",
+    "What is the most stupid thing you’ve done in your entire life?",
+    "If you could sit next to a celebrity in a restaurant, who would it be?",
+    "If you had 24 hours to do whatever you wanted in this country, what would you like to do?",
+    "If you could be a Hollywood celebrity, who would you like to become?",
+    "What is your main reason for getting out of bed every day?",
+    "How could you politely end a conversation with a person who is so annoying?",
+    "What makes your day better?",
+    "What is the strangest thing your teacher has ever done?",
+    "What is the best color in the rainbow?",
+    "Who is the best movie villain?",
+    "Would you rather have 20 hobbies or a single passion?",
+    "What’s your favorite exotic animal?",
+    "How would you describe me based on my outside appearance?",
+    "What is your favorite viral video?",
+    "Who is your favorite YouTube vlogger?",
+    "Fun questions coffee or tea Canva/Parade",
+    "If you could only drink coffee or tea for the rest of your life, which one would you choose?",
+    "What’s your favorite action movie?",
+    "What gets you motivated?",
+    "What’s the most beautiful country you’ve ever visited?",
+    "Would you rather cook or eat at a restaurant?",
+    "What is the most useless talent you possess?",
+    "What is the craziest thing you’ve done in school?",
+    "How often do you replace your bedsheets?",
+    "Do you like listening to podcasts?",
+    "Do you like to save more or spend more?",
+    "What is the weirdest superstition you’ve ever heard?",
+    "If dark chocolate is the only available food on this planet, would you eat it?",
+    "What are the two things you’d like to ask your pet?",
+    "Fun Questions to Ask Friends What’s the easiest dish to cook?",
+    "If you could be any type of object, what would you like to be?",
+    "How do you deal with a stressful environment?",
+    "Which part of the roller coaster do you usually ride: the front, middle or back?",
+    "What quotes do people admire, but you think are total lies?",
+    "Do you believe in second chances?",
+    "What has been the most flattering compliment you've ever received?",
+]
+
+for dat in data[13:]:
+    question.clear()
+    question.send_keys(dat)
+
+    submit = driver.find_element(By.CLASS_NAME, "submit")
+    submit.click()
+
+    time.sleep(2)
+    button = driver.find_element(By.CLASS_NAME, "another")
+    button.click()
